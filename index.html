@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Please check console</h1>
+  </body>
+  <script>
+    function personAccount(firstname, lastname) {
+      let incomes = new Map();
+      let expenses = new Map();
+
+      function totalIncome() {
+        let sum = 0;
+        for (let amount of incomes.values()) {
+          sum += amount;
+        }
+        return sum;
+      }
+
+      function totalExpense() {
+        let sum = 0;
+        for (let amount of expenses.values()) {
+          sum += amount;
+        }
+        return sum;
+      }
+
+      function accountInfo() {
+        console.log("Account Information");
+        console.log("First Name:", firstname);
+        console.log("Last Name:", lastname);
+        console.log("Total Income:", totalIncome());
+        console.log("Total Expense:", totalExpense());
+        console.log("Account Balance:", accountBalance());
+      }
+
+      function addIncome(description, amount) {
+        incomes.set(description, amount);
+      }
+
+      function addExpense(description, amount) {
+        expenses.set(description, amount);
+      }
+
+      function accountBalance() {
+        return totalIncome() - totalExpense();
+      }
+
+      return {
+        accountInfo,
+        addIncome,
+        addExpense,
+        accountBalance,
+      };
+    }
+
+    const myAccount = personAccount("Babu", "Rao");
+    myAccount.addIncome("Salary", 3000);
+    myAccount.addIncome("Freelance", 500);
+    myAccount.addExpense("Rent", 1000);
+    myAccount.addExpense("Groceries", 200);
+    myAccount.accountInfo();
+  </script>
+</html>
